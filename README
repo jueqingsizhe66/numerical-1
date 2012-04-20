@@ -1,0 +1,5 @@
+Numerical
+
+This repository contains small exercises, snippets, ... dealing with numerical computations. Most of them are written and executed using Octave, which should be almost compatible with Matlab.
+
+This repository was started when I took the Numerical Computations course at the Catholic University of Leuven. The Matlab exercises I had to do during that course are collected in the kul/ directory.

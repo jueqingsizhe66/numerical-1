@@ -31,9 +31,9 @@ function generate_and_plot(func)
   for i=1:(stop-start)/step
     X(i) = x;
     opl_f(i)    = f(x);
-    diff_v2(i)  = opl_f(i) - feval(func, xs2,  fs2,  x);
-    diff_v1(i)  = opl_f(i) - feval(func, xs1,  fs1,  x);
-    diff_v05(i) = opl_f(i) - feval(func, xs05, fs05, x);
+    diff_v2(i)  = abs(opl_f(i) - feval(func, xs2,  fs2,  x));
+    diff_v1(i)  = abs(opl_f(i) - feval(func, xs1,  fs1,  x));
+    diff_v05(i) = abs(opl_f(i) - feval(func, xs05, fs05, x));
     x = x + step;
   end
 

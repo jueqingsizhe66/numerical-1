@@ -22,7 +22,7 @@ end
 % f4' = -x^2/(x^2+1)
 function [result] = f4(x)
   k=0;
-  result = x - ( (atan(x) - x + k*pi) / -(x^2/(x^2+1) ) );
+  result = x - ((atan(x) - x + 0*pi) / -(x^2/(x^2+1)));
 end
 
 f1 = @(x) tan(x);

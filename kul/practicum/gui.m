@@ -73,7 +73,7 @@ function figure1_ResizeFcn(fig, ~, ~)
 
   formula4 = findobj('Tag', 'formula4');
   set(formula4,'Units','pixels');
-  formula4_pos = get(formula3,'Position');
+  formula4_pos = get(formula4,'Position');
   formula4_pos(2) = panelInspector_pos(4)-90;
   set(formula4, 'Position', formula4_pos);
 
@@ -176,7 +176,7 @@ function plotFormula()
   cla(axes, 'reset');
 
   func = eval(strcat('@(x) ', formula));
-  [xs, xzero] = subst(func, start, 10^-3, 100000 );
+  [xs, xzero] = subst(func, start, 10^-2, 100000 );
   show_iteration(func, xs, xmin, xmax, ymin, ymax);
   
 function hideBorderOnFormula()

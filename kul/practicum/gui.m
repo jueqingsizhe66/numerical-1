@@ -24,9 +24,10 @@ function varargout = gui_OutputFcn(hObject, eventdata, handles)
   varargout{1} = handles.output;
     
 function figure1_ResizeFcn(fig, ~, ~)
+  hEditFomula = findobj('Tag', 'editFormula');
   % set the border of the edit box to none (this seems to be the only place
   % where the object is avaiable, should not be done everytime though :-( )
-  jEdit = findjobj('class', 'edit');
+  jEdit = findjobj(hEditFomula);
   jEdit.Border = [];
   
   % set unit system temporary to pixels and get its position

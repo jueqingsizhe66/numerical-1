@@ -88,16 +88,44 @@ function panelFormula_ResizeFcn(panelFormula, ~, ~)
   buttonShow_pos(1) = editFormula_pos(1) + editFormula_pos(3);
   set(buttonShow, 'Position', buttonShow_pos);
 
-function buttonShow_Callback(buttonShow,~, ~)
+function buttonShow_Callback(~,~, ~)
+  plotFormula()
+
+function editXMin_Callback(~, ~, ~)
+  plotFormula()
+
+function editXMax_Callback(~, ~, ~)
+  plotFormula()
+
+function editYMin_Callback(~, ~, ~)
+  plotFormula()
+
+function editYMax_Callback(~, ~, ~)
+  plotFormula()
+
+function editStart_Callback(~, ~, ~)
+  plotFormula()
+
+function plotFormula()
   editFormula = findobj('Tag', 'editFormula');
-  plotFormula(get(editFormula, 'String'));
+  formula = get(editFormula, 'String');
   
-function plotFormula(formula)
+  editXMin = findobj('Tag', 'editXMin');
+  editXMax = findobj('Tag', 'editXMax');
+  editYMin = findobj('Tag', 'editYMin');
+  editYMax = findobj('Tag', 'editYMax');
+  xmin = str2num(get(editXMin,'String'));
+  xmax = str2num(get(editXMax,'String'));
+  ymin = str2num(get(editYMin,'String'));
+  ymax = str2num(get(editYMax,'String'));
+  % TODO: add checks to make sure that min < max
+  
   axes = gca;
   cla(axes, 'reset');
-  xs = -20:0.1:20;
+  xs = xmin:0.1:xmax;
   ys = [];
   for x = xs
     ys(end+1) = eval(formula);
   end
   plot(axes, xs, ys);
+  axis([xmin xmax ymin ymax])

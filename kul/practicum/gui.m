@@ -159,6 +159,9 @@ function plotFormula()
   editFormula = findobj('Tag', 'editFormula');
   formula = get(editFormula, 'String');
   
+  editStart = findobj('Tag', 'editStart' );
+  start = str2num(get(editStart, 'String' ));
+  
   editXMin = findobj('Tag', 'editXMin');
   editXMax = findobj('Tag', 'editXMax');
   editYMin = findobj('Tag', 'editYMin');
@@ -171,13 +174,10 @@ function plotFormula()
   
   axes = gca;
   cla(axes, 'reset');
-  xs = xmin:0.1:xmax;
-  ys = [];
-  for x = xs
-    ys(end+1) = eval(formula);
-  end
-  plot(axes, xs, ys);
-  axis([xmin xmax ymin ymax])
+
+  func = eval(strcat('@(x) ', formula));
+  [xs, xzero] = subst(func, start, 10^-3, 100000 );
+  show_iteration(func, xs, xmin, xmax, ymin, ymax);
   
 function hideBorderOnFormula()
   hEditFomula = findobj('Tag', 'editFormula');

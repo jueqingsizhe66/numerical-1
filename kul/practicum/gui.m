@@ -24,12 +24,10 @@ function varargout = gui_OutputFcn(hObject, eventdata, handles)
   varargout{1} = handles.output;
     
 function figure1_ResizeFcn(fig, ~, ~)
-  hEditFomula = findobj('Tag', 'editFormula');
   % set the border of the edit box to none (this seems to be the only place
   % where the object is avaiable, should not be done everytime though :-( )
-  jEdit = findjobj(hEditFomula);
-  jEdit.Border = [];
-  
+  hideBorderOnFormula();
+
   % set unit system temporary to pixels and get its position
   % [ left, bottom, width, height ]
   % (left bottom ?! who comes up with that?)
@@ -52,6 +50,32 @@ function figure1_ResizeFcn(fig, ~, ~)
   panelInspector_pos = get(panelInspector,'Position');
   panelInspector_pos = [0, panelStatus_pos(4), panelInspector_pos(3), fig_pos(4)-panelStatus_pos(4)];
   set(panelInspector, 'Position', panelInspector_pos);
+  
+  % formulas
+  % TODO: use function to do this with concatenated formulaX name
+  formula1 = findobj('Tag', 'formula1');
+  set(formula1,'Units','pixels');
+  formula1_pos = get(formula1,'Position');
+  formula1_pos(2) = panelInspector_pos(4)-30;
+  set(formula1, 'Position', formula1_pos);
+
+  formula2 = findobj('Tag', 'formula2');
+  set(formula2,'Units','pixels');
+  formula2_pos = get(formula2,'Position');
+  formula2_pos(2) = panelInspector_pos(4)-50;
+  set(formula2, 'Position', formula2_pos);
+
+  formula3 = findobj('Tag', 'formula3');
+  set(formula3,'Units','pixels');
+  formula3_pos = get(formula3,'Position');
+  formula3_pos(2) = panelInspector_pos(4)-70;
+  set(formula3, 'Position', formula3_pos);
+
+  formula4 = findobj('Tag', 'formula4');
+  set(formula4,'Units','pixels');
+  formula4_pos = get(formula3,'Position');
+  formula4_pos(2) = panelInspector_pos(4)-90;
+  set(formula4, 'Position', formula4_pos);
 
   % panelFormula
   panelFormula = findobj('Tag','panelFormula');
@@ -105,6 +129,31 @@ function editYMax_Callback(~, ~, ~)
 
 function editStart_Callback(~, ~, ~)
   plotFormula()
+  
+function editFormula_Callback(~, ~, ~)
+  plotFormula()
+
+function formula1_ButtonDownFcn(hObject, ~, ~)
+  selectFormula(get(hObject,'String'));
+  plotFormula();
+
+function formula2_ButtonDownFcn(hObject, ~, ~)
+  selectFormula(get(hObject,'String'));
+  plotFormula();
+
+function formula3_ButtonDownFcn(hObject, ~, ~)
+  selectFormula(get(hObject,'String'));
+  plotFormula();
+
+function formula4_ButtonDownFcn(hObject, ~, ~)
+  selectFormula(get(hObject,'String'));
+  plotFormula();
+  
+function selectFormula(formula)
+  editFormula = findobj('Tag', 'editFormula');
+  set(editFormula, 'String', formula);
+  % for some idiot reason we need to re-apply to no-border styling
+  hideBorderOnFormula();
 
 function plotFormula()
   editFormula = findobj('Tag', 'editFormula');
@@ -129,3 +178,8 @@ function plotFormula()
   end
   plot(axes, xs, ys);
   axis([xmin xmax ymin ymax])
+  
+function hideBorderOnFormula()
+  hEditFomula = findobj('Tag', 'editFormula');
+  jEdit = findjobj(hEditFomula);
+  jEdit.Border = [];

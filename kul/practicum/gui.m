@@ -92,12 +92,11 @@ function buttonShow_Callback(buttonShow,~, ~)
   plotFormula(get(editFormula, 'String'));
   
 function plotFormula(formula)
-  axes = findobj('Tag', 'axes');
-  cla(axes);
+  axes = gca;
+  cla(axes, 'reset');
   xs = -20:0.1:20;
   ys = [];
   for x = xs
     ys(end+1) = eval(formula);
   end
-  data = [xs', ys']
   plot(axes, xs, ys);

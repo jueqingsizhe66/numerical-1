@@ -179,6 +179,13 @@ function plotFormula()
   [xs, xzero] = subst(func, start, 10^-2, 100000 );
   show_iteration(func, xs, xmin, xmax, ymin, ymax);
   
+  % update resulting y and #iterations
+  textY = findobj('Tag', 'textY');
+  set(textY, 'String', strcat('y = ', num2str(xzero)));
+  textIterations = findobj('Tag', 'textIterations');
+  iterations = size(xs);
+  set(textIterations, 'String', strcat('#iter = ', num2str(iterations(2))));
+  
 function hideBorderOnFormula()
   hEditFomula = findobj('Tag', 'editFormula');
   jEdit = findjobj(hEditFomula);

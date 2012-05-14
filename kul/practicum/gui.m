@@ -127,10 +127,16 @@ function editYMin_Callback(~, ~, ~)
 function editYMax_Callback(~, ~, ~)
   plotFormula()
 
-function editStart_Callback(~, ~, ~)
+function editTol_Callback(hObject, eventdata, handles)
+  plotFormula()
+
+function editMaxIt_Callback(hObject, eventdata, handles)
   plotFormula()
 
 function editVariableK_Callback(~, ~, ~)
+  plotFormula()
+
+function editStart_Callback(~, ~, ~)
   plotFormula()
 
 function editFormula_Callback(~, ~, ~)
@@ -167,6 +173,14 @@ function plotFormula()
   
   editStart = findobj('Tag', 'editStart' );
   start = str2num(get(editStart, 'String' ));
+
+  editTol = findobj('Tag', 'editTol' );
+  tol = str2num(get(editTol, 'String' ));
+
+  editMaxIt = findobj('Tag', 'editMaxIt' );
+  maxIt = str2num(get(editMaxIt, 'String' ));
+  
+  axes = findobj('Tag', 'axes');
   
   editXMin = findobj('Tag', 'editXMin');
   editXMax = findobj('Tag', 'editXMax');
@@ -181,18 +195,25 @@ function plotFormula()
   axes = gca;
   cla(axes, 'reset');
 
-  func = eval(strcat('@(x,k) ', formula));
-  [xs, xzero] = subst(func, k, start, 10^-2, 100000 );
-  show_iteration(func, k, xs, xmin, xmax, ymin, ymax);
-  
-  % update resulting x, y and #iterations
   textX = findobj('Tag', 'textX');
-  set(textX, 'String', strcat('x = ', num2str(xzero)));
   textY = findobj('Tag', 'textY');
+  textIterations = findobj('Tag', 'textIterations');
+  
+  set(textX, 'String', 'working...' );
+  set(textY, 'String', '' );
+  set(textIterations, 'String', '' );
+  
+  drawnow;
+  
+  func = eval(strcat('@(x,k) ', formula));
+  [xs, xzero] = subst(func, k, start, tol, maxIt );
+  show_iteration(func, k, xs, xmin, xmax, ymin, ymax, axes);
+
+  % update resulting x, y and #iterations
+  set(textX, 'String', strcat('x = ', num2str(xzero)));
   y = feval(func, xzero, k);
   set(textY, 'String', strcat('y = ', num2str(y)));
-  textIterations = findobj('Tag', 'textIterations');
-  iterations = size(xs);
+  iterations = size(xs) -1;
   set(textIterations, 'String', strcat('#iter = ', num2str(iterations(2))));
   
 function hideBorderOnFormula()

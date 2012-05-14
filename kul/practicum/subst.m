@@ -1,9 +1,9 @@
-function [x, xzero, iterations, difference] = subst(F, x0, tol, maxit)
+function [x, xzero, iterations, difference] = subst(F, k, x0, tol, maxit)
   iteration = 0;
   diff = abs(tol)+1;
   xs = [x0];
   while (iteration < maxit) && (diff > tol);
-    new = feval(F, x0);
+    new = feval(F, x0, k);
     diff = abs(new - x0);
     x0 = new;
     xs(end+1) = x0;

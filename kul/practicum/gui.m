@@ -129,7 +129,10 @@ function editYMax_Callback(~, ~, ~)
 
 function editStart_Callback(~, ~, ~)
   plotFormula()
-  
+
+function editVariableK_Callback(~, ~, ~)
+  plotFormula()
+
 function editFormula_Callback(~, ~, ~)
   plotFormula()
 
@@ -158,6 +161,9 @@ function selectFormula(formula)
 function plotFormula()
   editFormula = findobj('Tag', 'editFormula');
   formula = get(editFormula, 'String');
+
+  editVariableK = findobj('Tag', 'editVariableK');
+  k = str2num(get(editVariableK, 'String'));
   
   editStart = findobj('Tag', 'editStart' );
   start = str2num(get(editStart, 'String' ));
@@ -175,9 +181,9 @@ function plotFormula()
   axes = gca;
   cla(axes, 'reset');
 
-  func = eval(strcat('@(x) ', formula));
-  [xs, xzero] = subst(func, start, 10^-2, 100000 );
-  show_iteration(func, xs, xmin, xmax, ymin, ymax);
+  func = eval(strcat('@(x,k) ', formula));
+  [xs, xzero] = subst(func, k, start, 10^-2, 100000 );
+  show_iteration(func, k, xs, xmin, xmax, ymin, ymax);
   
   % update resulting y and #iterations
   textY = findobj('Tag', 'textY');

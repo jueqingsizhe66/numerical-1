@@ -185,9 +185,12 @@ function plotFormula()
   [xs, xzero] = subst(func, k, start, 10^-2, 100000 );
   show_iteration(func, k, xs, xmin, xmax, ymin, ymax);
   
-  % update resulting y and #iterations
+  % update resulting x, y and #iterations
+  textX = findobj('Tag', 'textX');
+  set(textX, 'String', strcat('x = ', num2str(xzero)));
   textY = findobj('Tag', 'textY');
-  set(textY, 'String', strcat('y = ', num2str(xzero)));
+  y = feval(func, xzero, k);
+  set(textY, 'String', strcat('y = ', num2str(y)));
   textIterations = findobj('Tag', 'textIterations');
   iterations = size(xs);
   set(textIterations, 'String', strcat('#iter = ', num2str(iterations(2))));

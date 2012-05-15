@@ -1,3 +1,11 @@
+% renders X, Y axis
+%         1st bisectrice
+%         iteration step lines
+%         the substitution function
+%         start and end markers
+%
+% @author: Christophe VG
+
 function show_iteration(F, k, steps, xmin, xmax, ymin, ymax, axes)
   [X,Y] = generate_iteration_lines(steps);
 
@@ -7,7 +15,6 @@ function show_iteration(F, k, steps, xmin, xmax, ymin, ymax, axes)
     y(end+1) = feval(F, every_x, k);
   end
 
-  %axes = gca;
   hold on;
   plot( axes, [xmin,xmax], [0,0], '-k' );  % x-axis
   plot( axes, [0,0], [ymin,ymax], '-k' );  % y-axis

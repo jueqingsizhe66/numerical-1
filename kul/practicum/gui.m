@@ -1,3 +1,7 @@
+% UI for experimenting with convergence of different functions
+%
+% @author: Christophe VG
+
 function varargout = gui(varargin)
   gui_Singleton = 1;
   gui_State = struct('gui_Name',       mfilename, ...
@@ -206,10 +210,12 @@ function plotFormula()
   drawnow;
   
   func = eval(strcat('@(x,k) ', formula));
-  [xs, xzero] = subst(func, k, start, tol, maxIt );
+  [xs, xzero] = subst(func, start, tol, maxIt, k );
   show_iteration(func, k, xs, xmin, xmax, ymin, ymax, axes);
 
   % update resulting x, y and #iterations
+  format long;
+  out = xzero
   set(textX, 'String', strcat('x = ', num2str(xzero)));
   y = feval(func, xzero, k);
   set(textY, 'String', strcat('y = ', num2str(y)));

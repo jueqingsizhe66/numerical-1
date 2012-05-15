@@ -1,4 +1,11 @@
-function [x, xzero, iterations, difference] = subst(F, k, x0, tol, maxit)
+% applies the substitutionmethod to given function F, starting at x0, until
+% two subsequent iterations differ less than tol or when the number of
+% iterations exceeds maxit.
+% additional parameter k add to provide a second argument for F
+%
+% @author: Christophe VG
+
+function [x, xzero, iterations, difference] = subst(F, x0, tol, maxit, k)
   iteration = 0;
   diff = abs(tol)+1;
   xs = [x0];

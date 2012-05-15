@@ -6,7 +6,7 @@
 function grafieken_convergentie
 
   % function 2 is the only that can calculate the first non-zero root
-  [xs, xzero] = subst(@(x,k) atan(x) + k * pi, 1, 10^-6, 10^5, 1 );
+  [xs, xzero] = subst(@(x,k) atan(x) + k * pi, 1, 10^-16, 10^5, 1 );
   expected = 4.493440945790906;
 
   % calculate relative error
@@ -18,8 +18,8 @@ function grafieken_convergentie
   
   figure;
   semilogy( iterations, errors, '-' );
-  legend( 'F(x) = atan(x) + pi' );
-  xlabel( '# iteraties' );
-  ylabel( '% fout' );
-  title( 'Relatieve fout in functie van het aantal iteraties' );
+  legend( 'F(x) = atan(x) + pi');
+  xlabel( '# iteraties', 'fontsize', 13  );
+  ylabel( '% fout', 'fontsize', 13 );
+  % title( 'Relatieve fout in functie van het aantal iteraties', 'fontsize', 14 );
 end

@@ -1,6 +1,6 @@
 *~
-./*.pdf
 *.aux
 *.log
-verslag.pdf
+verslag*.pdf
 *.synctex.gz
+*.zip

@@ -1,6 +1,6 @@
 \documentclass[12pt,a4paper]{article}
 
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=0.9in]{geometry}
 \usepackage{graphicx}
 \usepackage{longtable}
 \usepackage[dutch]{babel}
@@ -145,7 +145,7 @@ Wanneer we de tangens functie gebruiken in de substitutiemethode, merken we dat 
 
 \subsection{$F(x,k) = \arctan(x) + k\pi$}
 
-De geparameteriseerde functie op basis van de boogtangens levert op zeer eenvoudige wijze alle gezochte nulpunten. Wanneer we $k \in \mathbb{N}$ nemen, krijgen we de opeenvolgende nulpunten. Hierbij kunnen we eenvoudig telkens dezelfde startwaarde (b.v.b.\ 1) nemen. Figuur \ref{fig:arctan} toont de situatie voor het eerste nulpunt dat van nul verschilt.
+De geparameteriseerde functie op basis van de boogtangens levert op zeer eenvoudige wijze alle gezochte nulpunten. Wanneer we $k \in \mathbb{N}$ nemen, krijgen we de opeenvolgende positieve nulpunten. Hierbij kunnen we eenvoudig telkens dezelfde startwaarde (b.v.b.\ 1) gebruiken. Figuur \ref{fig:arctan} toont de situatie voor het eerste nulpunt dat van nul verschilt, gevisualiseerd a.d.v.\ de ontwikkelde Matlab gebruikersinterface.
 
 \begin{figure}
 \begin{center}
@@ -163,7 +163,7 @@ Wanneer we $\tan(x) - x$ toepassen met Newton-Raphson en de substitutieformule $
 
 \subsection{Newton-Raphson voor $f(x) = \arctan(x) - x + k\pi$}
 
-Net zoals bij de tweede functie, merken we opnieuw dat de verschillende nulpunten kunnen gevonden worden voor waarden van $k \in \mathbb{N}$. Opnieuw kunnen we steeds van dezelfde startwaarde vertrekken, b.v.b. 1. Ook hier worden alle nulpunten gevonden en er ontstaan geen bijkomende vaste punten.
+Net zoals bij de tweede functie, merken we opnieuw dat de verschillende positieve nulpunten kunnen gevonden worden voor waarden van $k \in \mathbb{N}$. Opnieuw kunnen we steeds van dezelfde startwaarde vertrekken, b.v.b. 1. Ook hier worden alle nulpunten gevonden en er ontstaan geen bijkomende vaste punten.
 
 \subsection{Convergentiegedrag en nauwkeurigheid}
 
@@ -179,9 +179,9 @@ Aangezien slechts de tweede functie, $\arctan(x) + k\pi$, en de derde functie, $
 
 Aan de hand van de parameters \emph{tol} en \emph{maxit} kan de precisie van het resultaat verhoogd worden. Door afwisselend beide, indien mogelijk/nodig, te verhogen kunnen we op zoek gaan naar een resultaat dat niet meer wijzigt. In het geval van de tweede functie zien we dat deze nooit meer dan 14 iteraties nodig heeft om het eerste nulpunt te vinden. Hierbij kan de tolerantie verlaagd worden tot $10^{-16}$, waarna zowel het resultaat als het aantal iteraties niet meer wijzigen. Vanaf een tolerantie van $10^{-14}$ wordt reeds het finale resultaat bereikt.
 
-Voor de tweede functie is de gevonden waarde 4.493409457909064, waar de verwachte waarde 4.493409457909060 is, of een absolute fout van $4.440892098500626 10^{-15}$ of een nauwkeurigheid tot op 14 cijfers na de komma.
+Voor de tweede functie is de gevonden waarde 4.493409457909064, waar de verwachte waarde 4.493409457909060 is, of een absolute fout van $4.440892098500626 \ . \ 10^{-15}$ of een nauwkeurigheid tot op 14 cijfers na de komma.
 
-Voor de vierde functie is de gevonden waarde 4.493409457909538. Hier treedt een absolute fout op van $4.778399897986674 10{-13}$ en bereiken we een nauwkeurigheid tot op 11 cijfers na de komma.
+Voor de vierde functie is de gevonden waarde 4.493409457909538. Hier treedt een absolute fout op van $4.778399897986674 \ . \ 10^{-13}$ en bereiken we een nauwkeurigheid tot op 11 cijfers na de komma.
 
 \section{Tijdsbesteding}
 

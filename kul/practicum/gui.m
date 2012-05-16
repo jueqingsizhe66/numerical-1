@@ -214,8 +214,6 @@ function plotFormula()
   show_iteration(func, k, xs, xmin, xmax, ymin, ymax, axes);
 
   % update resulting x, y and #iterations
-  format long;
-  out = xzero
   set(textX, 'String', strcat('x = ', num2str(xzero)));
   y = feval(func, xzero, k);
   set(textY, 'String', strcat('y = ', num2str(y)));

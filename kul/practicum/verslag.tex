@@ -155,17 +155,19 @@ De geparameteriseerde functie op basis van de boogtangens levert op zeer eenvoud
 \end{center}
 \end{figure}
 
+Alle nulpunten worden gevonden en er ontstaan geen bijkomende vaste punten.
+
 \subsection{Newton-Raphson voor $f(x) = \tan(x) - x$}
 
 Wanneer we $\tan(x) - x$ toepassen met Newton-Raphson en de substitutieformule $x - \frac{tan(x) - x}{tan(x)^2}$ toepassen, merken we dat we opnieuw redelijk eenvoudig het nulpunt voor het extremum vinden. Ook de overige nulpunten zijn te benaderen. Hier moeten we echter een startwaarde kiezen die reeds zeer dicht bij het gezochte nulpunt ligt. Zo moeten we b.v.b.\ om het nulpunt 4,49340 te vinden minstens 4,3 als startwaarde gebruiken.
 
 \subsection{Newton-Raphson voor $f(x) = \arctan(x) - x + k\pi$}
 
-Net zoals bij de eerste functie, merken we opnieuw dat de voorwaarde voor convergentie alleen mogelijk is voor het nulpunt met waarde nul. De parameter $k$ stelt ons in staat om deze hellingsgraad te be\"invloeden, echter nooit tot een bruikbare situatie. Potenti\"ele nulpunten, in de vorm van snijpunten tussen de functie $x - \frac{\arctan(x) - x + k*pi}{\frac{1}{x^2+1} - 1}$ en de $1^e$ bissectrice ontbreken sowieso. Opnieuw zouden we dit wel kunnen cre\"eren door goede waardes voor $k$ te kiezen, alleen zou nog steeds een perfect startpunt nodig zijn om divergentie vermijden.
+Net zoals bij de tweede functie, merken we opnieuw dat de verschillende nulpunten kunnen gevonden worden voor waarden van $k \in \mathbb{N}$. Opnieuw kunnen we steeds van dezelfde startwaarde vertrekken, b.v.b. 1. Ook hier worden alle nulpunten gevonden en er ontstaan geen bijkomende vaste punten.
 
 \subsection{Convergentiegedrag en nauwkeurigheid}
 
-Aangezien alleen de tweede functie, $\arctan(x) + k\pi$, in staat is om meerdere nulpunten te benaderen, bekijken we het convergentiegedrag voor deze functie. Figuur \ref{fig:convergentie-error} toont de relatieve fout bij opeenvolgende iteraties.
+Aangezien slechts de tweede functie, $\arctan(x) + k\pi$, en de derde functie, $\arctan(x) - x + k\pi$, in staat zijn om meerdere nulpunten te benaderen, bekijken we het convergentiegedrag voor deze functies. Figuur \ref{fig:convergentie-error} toont de relatieve fout bij opeenvolgende iteraties.
 
 \begin{figure}
 \begin{center}
@@ -177,15 +179,17 @@ Aangezien alleen de tweede functie, $\arctan(x) + k\pi$, in staat is om meerdere
 
 Aan de hand van de parameters \emph{tol} en \emph{maxit} kan de precisie van het resultaat verhoogd worden. Door afwisselend beide, indien mogelijk/nodig, te verhogen kunnen we op zoek gaan naar een resultaat dat niet meer wijzigt. In het geval van de tweede functie zien we dat deze nooit meer dan 14 iteraties nodig heeft om het eerste nulpunt te vinden. Hierbij kan de tolerantie verlaagd worden tot $10^{-16}$, waarna zowel het resultaat als het aantal iteraties niet meer wijzigen. Vanaf een tolerantie van $10^{-14}$ wordt reeds het finale resultaat bereikt.
 
-De gevonden waarde is 4,493409457909064, waar de verwachte waarde 4,493440945790906 is, of een absolute fout van $-3.148788184148543 10^{-05}$ of een nauwkeurigheid tot op 4 cijfers na de komma.
+Voor de tweede functie is de gevonden waarde 4.493409457909064, waar de verwachte waarde 4.493409457909060 is, of een absolute fout van $4.440892098500626 10^{-15}$ of een nauwkeurigheid tot op 14 cijfers na de komma.
+
+Voor de vierde functie is de gevonden waarde 4.493409457909538. Hier treedt een absolute fout op van $4.778399897986674 10{-13}$ en bereiken we een nauwkeurigheid tot op 11 cijfers na de komma.
 
 \section{Tijdsbesteding}
 
 \begin{longtable}{l|r}
- Totaal in uren& 29.75 \\
+ Totaal in uren& 30.75 \\
  \hline
 \endfirsthead
- & 29.75 \\
+ & 30.75 \\
 \endhead
 \multicolumn{2}{r}{{Continued\ldots}} \
 \endfoot
@@ -195,7 +199,7 @@ De gevonden waarde is 4,493409457909064, waar de verwachte waarde 4,493440945790
 Schrijven code GUI & 9.25 \\
 Theoretische analyse van de verschillende substitutiemethodes & 10.00 \\
 Schrijven code overige functies & 3.50 \\
-Debuggen & 1.00 \\
+Debuggen & 2.00 \\
 Schrijven verslag & 6.00 \\
 
 \end{longtable}

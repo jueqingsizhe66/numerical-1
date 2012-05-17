@@ -1,6 +1,6 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[a4paper]{article}
 
-\usepackage[margin=0.9in]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
 \usepackage{longtable}
 \usepackage[dutch]{babel}
@@ -25,16 +25,17 @@
 \cfoot{}
 \lfoot{Practicum Numerieke Wiskunde - Christophe Van Ginneken}
 
-
 \geometry{a4paper}
 
-\title{\vspace{-6ex}Practicum Numerieke Wiskunde\vspace{-1.5ex}}
-\author{Christophe Van Ginneken}
-\date{\vspace{-1.5ex}\today}
+\title{\vspace{-6ex}Practicum Numerieke Wiskunde\vspace{-1ex}}
+\author{Christophe Van Ginneken\\
+\url{christophe.vanginneken@student.kuleuven.be}}
+\date{\today}
 
 \begin{document}
 \maketitle
-\vspace{-2cm}
+
+\vspace{-1.3cm}
 \section{Inleiding}
 
 We zoeken in dit practicum de maxima van een intensiteitspatroon voor een \'e\'en-spleet-diffractie. Deze wordt gegeven door
@@ -65,9 +66,9 @@ We zullen aantonen dat de maxima van $I(\theta)$ bereikt worden wanneer $\alpha$
 \end{equation}
 Vervolgens zullen we door middel van vier kandidaat substitutiemethodes trachten deze nulpunten te benaderen.
 
-\begin{figure}[h]
+\begin{figure}
 \begin{center}
- \includegraphics[width=110mm]{resources/single-slit-diffraction-components.pdf}
+ \includegraphics[width=125mm]{resources/single-slit-diffraction-components.pdf}
  \caption{Componenten van een \'e\'en-spleet-diffractie}
   \label{fig:single-slit-diffraction-components}
 \end{center}
@@ -79,7 +80,7 @@ De minima en maxima van een functie kunnen gevonden worden door het bepalen van 
 
 \begin{figure}
 \begin{center}
- \includegraphics[width=100mm]{resources/maxima.pdf}
+ \includegraphics[width=120mm]{resources/maxima.pdf}
  \caption{Intensiteitspatroon (rood) en overeenkomstige afgeleide functie (groen)}
   \label{fig:maxima}
 \end{center}
@@ -103,7 +104,7 @@ $\cos\theta$ zal nulpunten opleveren voor $\theta = \frac{1}{2} \pi (4n-1), n \i
 
 \begin{figure}
 \begin{center}
- \includegraphics[width=100mm]{resources/cosine-period.pdf}
+ \includegraphics[width=120mm]{resources/cosine-period.pdf}
  \caption{Periode van de $\cos$-functie}
   \label{fig:cosine-period}
 \end{center}
@@ -113,7 +114,7 @@ We weten dat $\sin\theta$ nulpunten oplevert voor $\theta = n \pi, n \in \mathbb
 
 \begin{figure}
 \begin{center}
- \includegraphics[width=100mm]{resources/minima.pdf}
+ \includegraphics[width=120mm]{resources/minima.pdf}
  \caption{Minima van het intensiteitspatroon.}
   \label{fig:minima}
 \end{center}
@@ -149,7 +150,7 @@ De geparameteriseerde functie op basis van de boogtangens levert op zeer eenvoud
 
 \begin{figure}
 \begin{center}
- \includegraphics[width=120mm]{resources/arctan.png}
+ \includegraphics[width=150mm]{resources/arctan.png}
  \caption{Benadering van een nulpunt met $F(x,k) = \arctan(x) + k\pi$ met $k=1$}
   \label{fig:arctan}
 \end{center}
@@ -171,7 +172,7 @@ Aangezien slechts de tweede functie, $\arctan(x) + k\pi$, en de derde functie, $
 
 \begin{figure}
 \begin{center}
- \includegraphics[width=80mm]{resources/convergentie-error.pdf}
+ \includegraphics[width=120mm]{resources/convergentie-error.pdf}
  \caption{Relatieve fout in functie van het aantal iteraties}
   \label{fig:convergentie-error}
 \end{center}
@@ -179,7 +180,7 @@ Aangezien slechts de tweede functie, $\arctan(x) + k\pi$, en de derde functie, $
 
 Aan de hand van de parameters \emph{tol} en \emph{maxit} kan de precisie van het resultaat verhoogd worden. Door afwisselend beide, indien mogelijk/nodig, te verhogen kunnen we op zoek gaan naar een resultaat dat niet meer wijzigt. In het geval van de tweede functie zien we dat deze nooit meer dan 14 iteraties nodig heeft om het eerste nulpunt te vinden. Hierbij kan de tolerantie verlaagd worden tot $10^{-16}$, waarna zowel het resultaat als het aantal iteraties niet meer wijzigen. Vanaf een tolerantie van $10^{-14}$ wordt reeds het finale resultaat bereikt.
 
-Voor de tweede functie is de gevonden waarde 4.493409457909064, waar de verwachte waarde 4.493409457909060 is, of een absolute fout van $4.440892098500626 \ . \ 10^{-15}$ of een nauwkeurigheid tot op 14 cijfers na de komma.
+De verwachte waarde voor het eerste positieve nulpunt is 4.493409457909060. Voor de tweede functie is de gevonden waarde 4.493409457909064 of een absolute fout van $4.440892098500626 \ . \ 10^{-15}$ of een nauwkeurigheid tot op 14 cijfers na de komma.
 
 Voor de vierde functie is de gevonden waarde 4.493409457909538. Hier treedt een absolute fout op van $4.778399897986674 \ . \ 10^{-13}$ en bereiken we een nauwkeurigheid tot op 11 cijfers na de komma.
 

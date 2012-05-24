@@ -9,7 +9,7 @@ function grafieken_convergentie
   [xs2, xzero2] = subst(@(x,k) atan(x) + k * pi, 1, 10^-16, 10^5, 1 );
   [xs4, xzero4] = subst(@(x,k) x - (atan(x) - x + k*pi) / (1/(x^2+1) - 1), 1, 10^-16, 10^5, 1 );
 
-  expected = 4.493440945790906;
+  expected = 4.49340945790906
 
   % calculate relative errors
   
